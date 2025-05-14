@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SchoolApp</string>
+    <string name="str_Asistencia">ASISTENCIAS</string>
+    <string name="str_Matricula">MATRICULA</string>
+    <string name="str_Anuncios">ANUNCIOS</string>
+    <string name="str_Opciones">OPCIONES</string>
+    <string name="str_Inicio">INICIO</string>
+    <string name="str_login">INICIO DE SESION</string>
+</resources>

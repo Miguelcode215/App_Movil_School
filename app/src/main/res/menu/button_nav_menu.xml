@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_inicio"
+        android:icon="@drawable/ic_inicio"
+        android:title="@string/str_Inicio"/>
+
+    <item
+        android:id="@+id/menu_dashboard"
+        android:icon="@drawable/ic_asistencia"
+        android:title="@string/str_Asistencia" />
+    <item
+        android:id="@+id/menu_alumnos"
+        android:icon="@drawable/ic_opciones"
+        android:title="@string/str_Matricula" />
+    <item
+        android:id="@+id/menu_comunicados"
+        android:icon="@drawable/ic_anuncios"
+        android:title="@string/str_Anuncios" />
+    <item
+        android:id="@+id/menu_perfil"
+        android:icon="@drawable/ic_opciones"
+        android:title="@string/str_Opciones" />
+</menu>
