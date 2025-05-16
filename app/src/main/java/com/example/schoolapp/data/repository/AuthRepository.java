@@ -1,5 +1,7 @@
 package com.example.schoolapp.data.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -25,16 +27,20 @@ public class AuthRepository {
         apiService.login(new LoginRequest(email, password)).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                Log.d("LOGIN", "Código: " + response.code());
                if (response.isSuccessful() && response.body() != null) {
                    loginResponseLiveData.postValue(response.body());
+                   Log.d("LOGIN", "Login exitoso: " + response.body().getToken());
                } else {
                    loginResponseLiveData.postValue(null);
+                   Log.d("LOGIN", "Fallo login: " + response.errorBody());
                }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable throwable) {
                 loginResponseLiveData.postValue(null);
+                Log.e("LOGIN", "Error en onFailure: " + throwable.getMessage(), throwable);
             }
         });
 

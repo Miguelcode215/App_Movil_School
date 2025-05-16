@@ -57,6 +57,7 @@ public class Login extends AppCompatActivity {
 
             // Llamamos al loguin de ViewModel
             authViewModel.login(emailInput, passInput).observe(this, loginResponse -> {
+                Log.d("LOGIN", "Intentando login con: " + emailInput + " / " + passInput);
                 if (loginResponse != null && loginResponse.getToken() != null) {
                     //Guardamos el token y el rol
                     SharedPrefManager.getInstance(this).saveAuthToken(loginResponse.getToken());
