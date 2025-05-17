@@ -43,6 +43,7 @@ public class Login extends AppCompatActivity {
 
         // Inicializamos el ViewModel
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        authViewModel.init(this);
 
         btn_login.setOnClickListener(v -> {
             String emailInput = email.getText().toString().trim();

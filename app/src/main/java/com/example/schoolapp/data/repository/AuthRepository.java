@@ -1,5 +1,6 @@
 package com.example.schoolapp.data.repository;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -17,8 +18,8 @@ import retrofit2.Response;
 public class AuthRepository {
     private ApiService apiService;
 
-    public AuthRepository(){
-        apiService = ApiClient.getCliente().create(ApiService.class); //Sin token al principio
+    public AuthRepository(Context context) {
+        apiService = ApiClient.getCliente(context).create(ApiService.class);
     }
 
     public LiveData<LoginResponse> login(String email, String password) {
@@ -28,13 +29,13 @@ public class AuthRepository {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.d("LOGIN", "Código: " + response.code());
-               if (response.isSuccessful() && response.body() != null) {
-                   loginResponseLiveData.postValue(response.body());
-                   Log.d("LOGIN", "Login exitoso: " + response.body().getToken());
-               } else {
-                   loginResponseLiveData.postValue(null);
-                   Log.d("LOGIN", "Fallo login: " + response.errorBody());
-               }
+                if (response.isSuccessful() && response.body() != null) {
+                    loginResponseLiveData.postValue(response.body());
+                    Log.d("LOGIN", "Login exitoso: " + response.body().getToken());
+                } else {
+                    loginResponseLiveData.postValue(null);
+                    Log.d("LOGIN", "Fallo login: " + response.errorBody());
+                }
             }
 
             @Override
@@ -47,3 +48,4 @@ public class AuthRepository {
         return loginResponseLiveData;
     }
 }
+
