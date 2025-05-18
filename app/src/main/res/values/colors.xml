@@ -3,4 +3,33 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#EBE157</color>
+
+    <color name="background_default">#FAFAFA</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <color name="text_primary">#263238</color>
+    <color name="text_secondary">#455A64</color>
+
+    <color name="card_info_bg">#B2EBF2</color>
+    <color name="text_info">#004D40</color>
+
+    <color name="card_warning_bg">#FFCDD2</color>
+    <color name="text_warning">#B71C1C</color>
+
+    <color name="colorFondoCard">#FFFFFF</color>
+    <color name="colorTextoLeyenda">#333333</color>
+
+    <!-- Fondo general de Card -->
+    <color name="cardBackground">#FFFFFF</color>
+
+    <!-- Texto del título -->
+    <color name="colorTituloGrafico">#222222</color>
+
+    <!-- Colores por tipo de asistencia -->
+    <color name="colorPresente">#4CAF50</color> <!-- Verde -->
+    <color name="colorAtrasado">#FFC107</color> <!-- Amarillo -->
+    <color name="colorAusente">#F44336</color> <!-- Rojo -->
+    <color name="colorJustificado">#2196F3</color> <!-- Azul -->
+
+
 </resources>

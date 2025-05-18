@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.schoolapp.data.model.Asistencia;
+import com.example.schoolapp.data.model.ConteoAsistencias;
+import com.example.schoolapp.data.model.PorcentajeAsistencias;
 import com.example.schoolapp.data.repository.AsistenciaRepository;
 
 import java.util.HashMap;
@@ -96,4 +98,53 @@ public class AsistenciaViewModel extends AndroidViewModel {
         }
         return faltas;
     }
+
+    public ConteoAsistencias obtenerConteoAsistencias(List<Asistencia> asistencias) {
+        int p = 0, a = 0, au = 0, j = 0;
+
+        if (asistencias != null) {
+            for (Asistencia asistencia : asistencias) {
+                String tipo = asistencia.getAsistencia();
+                if (tipo == null) continue;
+
+                switch (tipo) {
+                    case "Presente": p++; break;
+                    case "Atrasado": a++; break;
+                    case "Ausente": au++; break;
+                    case "Justificado": j++; break;
+                }
+            }
+        }
+
+        return new ConteoAsistencias(p, a, au, j);
+    }
+
+    public PorcentajeAsistencias obtenerPorcentajeAsistencias(List<Asistencia> asistencias) {
+        int total = 0, p = 0, a = 0, au = 0, j = 0;
+
+        if (asistencias != null) {
+            for (Asistencia asistencia : asistencias) {
+                String tipo = asistencia.getAsistencia();
+                if (tipo == null) continue;
+
+                switch (tipo) {
+                    case "Presente": p++; break;
+                    case "Atrasado": a++; break;
+                    case "Ausente": au++; break;
+                    case "Justificado": j++; break;
+                }
+                total++;
+            }
+        }
+
+        if (total == 0) return new PorcentajeAsistencias(0, 0, 0, 0);
+
+        return new PorcentajeAsistencias(
+                (p * 100f) / total,
+                (a * 100f) / total,
+                (au * 100f) / total,
+                (j * 100f) / total
+        );
+    }
+
 }

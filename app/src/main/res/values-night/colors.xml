@@ -1,0 +1,29 @@
+<resources>
+    <color name="background_default">#121212</color>
+    <color name="card_background">#1E1E1E</color>
+
+    <color name="text_primary">#FAFAFA</color>
+    <color name="text_secondary">#CFD8DC</color>
+
+    <color name="card_info_bg">#004D40</color>
+    <color name="text_info">#B2EBF2</color>
+
+    <color name="card_warning_bg">#B71C1C</color>
+    <color name="text_warning">#FFCDD2</color>
+
+    <color name="colorFondoCard">#FFFFFF</color>
+    <color name="colorTextoLeyenda">#333333</color>
+
+    <!-- Fondo general de Card -->
+    <color name="cardBackground">#1E1E1E</color>
+
+    <!-- Texto del título -->
+    <color name="colorTituloGrafico">#EEEEEE</color>
+
+    <!-- Colores por tipo de asistencia (pueden mantenerse iguales o ser más suaves si deseas) -->
+    <color name="colorPresente">#81C784</color> <!-- Verde claro -->
+    <color name="colorAtrasado">#FFD54F</color> <!-- Amarillo claro -->
+    <color name="colorAusente">#E57373</color> <!-- Rojo claro -->
+    <color name="colorJustificado">#64B5F6</color> <!-- Azul claro -->
+
+</resources>

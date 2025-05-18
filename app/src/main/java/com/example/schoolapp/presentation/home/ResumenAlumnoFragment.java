@@ -17,6 +17,8 @@ import com.example.schoolapp.R;
 import com.example.schoolapp.adapter.AlumnoResumenAdapter;
 import com.example.schoolapp.data.model.Alumno;
 import com.example.schoolapp.data.model.Asistencia;
+import com.example.schoolapp.data.model.ConteoAsistencias;
+import com.example.schoolapp.data.model.PorcentajeAsistencias;
 import com.example.schoolapp.viewmodel.AsistenciaViewModel;
 
 import java.util.HashMap;
@@ -73,12 +75,23 @@ public class ResumenAlumnoFragment extends Fragment {
                             int porcentaje = asistenciaViewModel.calcularPorcentajeAsistencia(asistencias);
                             int faltas = asistenciaViewModel.contarFaltas(asistencias);
 
-                            // Adaptador espera lista de alumnos y mapas por ID
+                            Map<Integer, ConteoAsistencias> mapaConteo = new HashMap<>();
+                            mapaConteo.put(alumno.getId_Alumno(), asistenciaViewModel.obtenerConteoAsistencias(asistencias));
+
+                            Map<Integer, PorcentajeAsistencias> mapaPorcentajes = new HashMap<>();
+                            mapaPorcentajes.put(alumno.getId_Alumno(), asistenciaViewModel.obtenerPorcentajeAsistencias(asistencias));
+
+                            Log.d("ResumenAlumnoFragment", "Conteo: " + mapaConteo.get(alumno.getId_Alumno()));
+                            Log.d("ResumenAlumnoFragment", "Porcentaje: " + mapaPorcentajes.get(alumno.getId_Alumno()));
+
                             AlumnoResumenAdapter adapter = new AlumnoResumenAdapter(
-                                    List.of(alumno), // solo uno en este caso
+                                    List.of(alumno),
                                     Map.of(alumno.getId_Alumno(), porcentaje),
-                                    Map.of(alumno.getId_Alumno(), faltas)
+                                    Map.of(alumno.getId_Alumno(), faltas),
+                                    mapaConteo,
+                                    mapaPorcentajes
                             );
+
                             recyclerView.setAdapter(adapter);
                         }
                     });
