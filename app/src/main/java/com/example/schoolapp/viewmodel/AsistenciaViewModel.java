@@ -72,13 +72,13 @@ public class AsistenciaViewModel extends AndroidViewModel {
 
             tipo = tipo.toLowerCase();
 
-            if ("presente".equals(tipo)) {
+            if ("Presente".equals(tipo)) {
                 totalPuntaje += 1.0;
                 totalConsiderados++;
-            } else if ("atrasado".equals(tipo)) {
+            } else if ("Atrasado".equals(tipo)) {
                 totalPuntaje += 0.5;
                 totalConsiderados++;
-            } else if ("ausente".equals(tipo)) {
+            } else if ("Ausente".equals(tipo)) {
                 totalPuntaje += 0;
                 totalConsiderados++;
             }
