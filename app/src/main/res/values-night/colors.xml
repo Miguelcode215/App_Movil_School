@@ -18,7 +18,10 @@
     <color name="cardBackground">#1E1E1E</color>
 
     <!-- Texto del título -->
-    <color name="colorTituloGrafico">#EEEEEE</color>
+    <color name="colorTituloGrafico">#FFFFFFFF</color>
+
+    <!-- color para titulo y barra de navegacion -->
+    <color name="tituloynavegacion">#121212</color>
 
     <!-- Colores por tipo de asistenciaResumen (pueden mantenerse iguales o ser más suaves si deseas) -->
     <color name="colorPresente">#81C784</color> <!-- Verde claro -->

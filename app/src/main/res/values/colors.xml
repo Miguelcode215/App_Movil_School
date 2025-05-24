@@ -23,7 +23,10 @@
     <color name="cardBackground">#FFFFFF</color>
 
     <!-- Texto del título -->
-    <color name="colorTituloGrafico">#222222</color>
+    <color name="colorTituloGrafico">#FF000000</color>
+
+    <!-- color para titulo y barra de navegacion -->
+    <color name="tituloynavegacion">#CACACA</color>
 
     <!-- Colores por tipo de asistenciaResumen -->
     <color name="colorPresente">#4CAF50</color> <!-- Verde -->
