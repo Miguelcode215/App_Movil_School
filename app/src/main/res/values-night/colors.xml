@@ -23,6 +23,9 @@
     <!-- color para titulo y barra de navegacion -->
     <color name="tituloynavegacion">#121212</color>
 
+    <!-- color para tla pantalla de carga -->
+    <color name="loading">#B3000000</color>
+
     <!-- Colores por tipo de asistenciaResumen (pueden mantenerse iguales o ser más suaves si deseas) -->
     <color name="colorPresente">#81C784</color> <!-- Verde claro -->
     <color name="colorAtrasado">#FFD54F</color> <!-- Amarillo claro -->
