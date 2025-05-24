@@ -5,28 +5,35 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.schoolapp.R;
-import com.example.schoolapp.features.inicio.adapter.AlumnoResumenAdapter;
 import com.example.schoolapp.core.model.Alumno;
+import com.example.schoolapp.features.inicio.model.AsistenciaResumen;
+import com.example.schoolapp.features.inicio.model.ConteoAsistencias;
+import com.example.schoolapp.features.inicio.model.PorcentajeAsistencias;
 import com.example.schoolapp.features.inicio.viewmodel.ResumenAsistenciaViewModel;
+import com.example.schoolapp.features.inicio.utils.ChartUtils;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 
-import java.util.List;
 import java.util.Map;
 
 public class ResumenAlumnoFragment extends Fragment {
 
     private static final String ARG_ALUMNO = "alumno";
     private Alumno alumno;
-    private RecyclerView recyclerView;
     private ResumenAsistenciaViewModel resumenAsistenciaViewModel;
+
+    // UI
+    private TextView textNombre, textGrado, textPorcentaje, textFaltas;
+    private PieChart pieChart;
+    private BarChart barChart;
 
     public ResumenAlumnoFragment() {}
 
@@ -60,8 +67,16 @@ public class ResumenAlumnoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recyclerViewResumen);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        View loadingOverlay = view.findViewById(R.id.loadingOverlay);
+
+        loadingOverlay.setVisibility(View.VISIBLE);// Mostrar cuando cargando
+
+        textNombre = view.findViewById(R.id.textNombreCompleto);
+        textGrado = view.findViewById(R.id.textGrado);
+        textPorcentaje = view.findViewById(R.id.textAsistenciaPorcentaje);
+        textFaltas = view.findViewById(R.id.textCantidadFaltas);
+        pieChart = view.findViewById(R.id.pieChartAsistencia);
+        barChart = view.findViewById(R.id.barChartAsistencia);
 
         if (alumno != null) {
             resumenAsistenciaViewModel = new ViewModelProvider(this).get(ResumenAsistenciaViewModel.class);
@@ -69,25 +84,41 @@ public class ResumenAlumnoFragment extends Fragment {
 
             resumenAsistenciaViewModel.getResumenLiveData()
                     .observe(getViewLifecycleOwner(), resumen -> {
+                        loadingOverlay.setVisibility(View.GONE); // ← Oculta al recibir los datos
                         if (resumen != null) {
-                            int porcentaje = resumen.getPorcentaje_asistencia();
-                            int faltas = resumen.getConteo_faltas();
-                            Map<String, Integer> conteo = resumen.getConteo();
-                            Map<String, Float> distribucion = resumen.getDistribucion_porcentual();
-
-                            Log.d("ResumenAlumnoFragment", "Conteo: " + conteo);
-                            Log.d("ResumenAlumnoFragment", "Porcentaje: " + distribucion);
-
-                            AlumnoResumenAdapter adapter = new AlumnoResumenAdapter(
-                                    List.of(alumno),
-                                    Map.of(alumno.getId_Alumno(), resumen)
-                            );
-
-                            recyclerView.setAdapter(adapter);
+                            mostrarDatos(alumno, resumen);
                         }
                     });
         } else {
             Log.e("ResumenAlumnoFragment", "Alumno recibido es null");
         }
     }
+
+    private void mostrarDatos(Alumno alumno, AsistenciaResumen resumen) {
+        textNombre.setText(alumno.getNombreCompleto());
+        textGrado.setText(alumno.getGrados().getNombre_grado());
+        textPorcentaje.setText(resumen.getPorcentaje_asistencia() + "%");
+        textFaltas.setText(resumen.getConteo_faltas() + " faltas");
+
+        Map<String, Integer> conteo = resumen.getConteo();
+        Map<String, Float> distribucion = resumen.getDistribucion_porcentual();
+
+        PorcentajeAsistencias porcentajes = new PorcentajeAsistencias(
+                distribucion.getOrDefault("Presente", 0f),
+                distribucion.getOrDefault("Atrasado", 0f),
+                distribucion.getOrDefault("Ausente", 0f),
+                distribucion.getOrDefault("Justificado", 0f)
+        );
+
+        ConteoAsistencias conteoAsistencias = new ConteoAsistencias(
+                conteo.getOrDefault("Presente", 0),
+                conteo.getOrDefault("Atrasado", 0),
+                conteo.getOrDefault("Ausente", 0),
+                conteo.getOrDefault("Justificado", 0)
+        );
+
+        ChartUtils.configurarPieChart(pieChart, porcentajes);
+        ChartUtils.configurarBarChart(requireContext(), barChart, conteoAsistencias);
+    }
+
 }

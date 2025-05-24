@@ -1,15 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewResumen"
+    <ScrollView
+        android:id="@+id/scrollViewContenido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"/>
+        android:background="@color/background_default"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:elevation="8dp"
+                    android:background="@color/card_background">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/textNombreCompleto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre completo"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:paddingBottom="6dp" />
+
+                        <TextView
+                            android:id="@+id/textGrado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Grado"
+                            android:textSize="16sp"
+                            android:textColor="@color/text_secondary"
+                            android:paddingBottom="16dp" />
+
+                        <!-- Tarjetas resumen -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            android:paddingBottom="16dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardAsistenciaPorcentaje"
+                                android:layout_width="0dp"
+                                android:layout_height="110dp"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="8dp"
+                                app:cardCornerRadius="12dp"
+                                android:elevation="3dp"
+                                android:backgroundTint="@color/card_info_bg">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/textAsistenciaPorcentaje"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="--%"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_info" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Asistencia"
+                                        android:textSize="14sp"
+                                        android:textColor="@color/text_info" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardFaltasTotales"
+                                android:layout_width="0dp"
+                                android:layout_height="110dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                app:cardCornerRadius="12dp"
+                                android:elevation="3dp"
+                                android:backgroundTint="@color/card_warning_bg">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/textCantidadFaltas"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="--"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_warning" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Faltas"
+                                        android:textSize="14sp"
+                                        android:textColor="@color/text_warning" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <!-- Card: Gráfico Pie -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="12dp"
+                            app:cardCornerRadius="12dp"
+                            android:elevation="4dp"
+                            app:cardBackgroundColor="@color/cardBackground">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Porcentaje de asistenciaResumen durante el año escolar"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/colorTituloGrafico"
+                                    android:layout_marginBottom="8dp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:weightSum="2">
+
+                                    <com.github.mikephil.charting.charts.PieChart
+                                        android:id="@+id/pieChartAsistencia"
+                                        android:layout_width="0dp"
+                                        android:layout_height="200dp"
+                                        android:layout_weight="1" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical"
+                                        android:paddingStart="16dp"
+                                        android:paddingEnd="8dp">
+
+                                        <!-- Reutilizamos las leyendas -->
+                                        <!-- Leyenda manual -->
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:paddingStart="20dp">
+
+                                            <!-- Presente -->
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginBottom="8dp">
+                                                <View
+                                                    android:layout_width="16dp"
+                                                    android:layout_height="16dp"
+                                                    android:backgroundTint="@color/colorPresente"
+                                                    android:background="@drawable/legend_circle" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Presente"
+                                                    android:layout_marginStart="8dp" />
+                                            </LinearLayout>
+
+                                            <!-- Atrasado -->
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginBottom="8dp">
+                                                <View
+                                                    android:layout_width="16dp"
+                                                    android:layout_height="16dp"
+                                                    android:backgroundTint="@color/colorAtrasado"
+                                                    android:background="@drawable/legend_circle" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Atrasado"
+                                                    android:layout_marginStart="8dp" />
+                                            </LinearLayout>
+
+                                            <!-- Ausente -->
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginBottom="8dp">
+                                                <View
+                                                    android:layout_width="16dp"
+                                                    android:layout_height="16dp"
+                                                    android:backgroundTint="@color/colorAusente"
+                                                    android:background="@drawable/legend_circle" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Ausente"
+                                                    android:layout_marginStart="8dp" />
+                                            </LinearLayout>
+
+                                            <!-- Justificado -->
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+                                                <View
+                                                    android:layout_width="16dp"
+                                                    android:layout_height="16dp"
+                                                    android:backgroundTint="@color/colorJustificado"
+                                                    android:background="@drawable/legend_circle" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Justificado"
+                                                    android:layout_marginStart="8dp" />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Card: Gráfico de barras -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardBackgroundColor="@color/cardBackground"
+                            android:elevation="4dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Conteo de Asistencias durante el Año escolar"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/colorTituloGrafico"
+                                    android:layout_marginBottom="8dp" />
+
+                                <com.github.mikephil.charting.charts.BarChart
+                                    android:id="@+id/barChartAsistencia"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <!-- OVERLAY DE CARGA -->
+    <include layout="@layout/view_loading" />
+
+</FrameLayout>
