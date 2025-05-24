@@ -20,7 +20,7 @@
     <!-- Texto del título -->
     <color name="colorTituloGrafico">#EEEEEE</color>
 
-    <!-- Colores por tipo de asistencia (pueden mantenerse iguales o ser más suaves si deseas) -->
+    <!-- Colores por tipo de asistenciaResumen (pueden mantenerse iguales o ser más suaves si deseas) -->
     <color name="colorPresente">#81C784</color> <!-- Verde claro -->
     <color name="colorAtrasado">#FFD54F</color> <!-- Amarillo claro -->
     <color name="colorAusente">#E57373</color> <!-- Rojo claro -->

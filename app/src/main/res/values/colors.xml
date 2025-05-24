@@ -25,7 +25,7 @@
     <!-- Texto del título -->
     <color name="colorTituloGrafico">#222222</color>
 
-    <!-- Colores por tipo de asistencia -->
+    <!-- Colores por tipo de asistenciaResumen -->
     <color name="colorPresente">#4CAF50</color> <!-- Verde -->
     <color name="colorAtrasado">#FFC107</color> <!-- Amarillo -->
     <color name="colorAusente">#F44336</color> <!-- Rojo -->
