@@ -28,6 +28,9 @@
     <!-- color para titulo y barra de navegacion -->
     <color name="tituloynavegacion">#CACACA</color>
 
+    <!-- color para tla pantalla de carga -->
+    <color name="loading">#B3000000</color>
+
     <!-- Colores por tipo de asistenciaResumen -->
     <color name="colorPresente">#4CAF50</color> <!-- Verde -->
     <color name="colorAtrasado">#FFC107</color> <!-- Amarillo -->
