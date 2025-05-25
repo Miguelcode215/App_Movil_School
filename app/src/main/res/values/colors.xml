@@ -31,6 +31,12 @@
     <!-- color para tla pantalla de carga -->
     <color name="loading">#B3000000</color>
 
+    <color name="card_asistencia_background">#F5F5F5</color> <!-- Gris claro -->
+
+    <color name="background_dropdown">#FAFAFA</color>
+
+    <color name="lineaseparacion">#FF000000</color>
+
     <!-- Colores por tipo de asistenciaResumen -->
     <color name="colorPresente">#4CAF50</color> <!-- Verde -->
     <color name="colorAtrasado">#FFC107</color> <!-- Amarillo -->

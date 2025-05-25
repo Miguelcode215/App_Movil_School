@@ -1,6 +1,7 @@
 package com.example.schoolapp.core.network;
 
 import com.example.schoolapp.core.model.Alumno;
+import com.example.schoolapp.features.asistencias.model.AsistenciaPorMesResponse;
 import com.example.schoolapp.features.inicio.model.AsistenciaResumen;
 import com.example.schoolapp.features.autenticacion.model.LoginRequest;
 import com.example.schoolapp.features.autenticacion.model.LoginResponse;
@@ -23,5 +24,11 @@ public interface ApiService {
 
     @GET("resumenAsistencia/{id}")
     Call<AsistenciaResumen> obtenerResumenAsistencia(@Path("id") int idAlumno);
+
+    @GET("asistenciasPorMes/{id_alumno}/{mes}")
+    Call<AsistenciaPorMesResponse> obtenerAsistenciasPorMes(
+            @Path("id_alumno") int idAlumno,
+            @Path("mes") int mes
+    );
 
 }

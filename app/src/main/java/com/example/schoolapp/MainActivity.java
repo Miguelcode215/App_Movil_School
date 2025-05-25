@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.schoolapp.features.asistencias.ui.AsistenciaFragment;
 import com.example.schoolapp.features.inicio.ui.InicioFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.menu_inicio) {
                 selectedFragment = new InicioFragment();
             } else if (item.getItemId() == R.id.menu_dashboard) {
-                // selectedFragment = new AsistenciaFragment();
+                selectedFragment = new AsistenciaFragment();
             } else if (item.getItemId() == R.id.menu_alumnos) {
                 // selectedFragment = new MatriculaFragment();
             }
