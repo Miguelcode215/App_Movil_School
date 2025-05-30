@@ -1,6 +1,7 @@
 package com.example.schoolapp.core.network;
 
 import com.example.schoolapp.core.model.Alumno;
+import com.example.schoolapp.core.model.AlumnoConApoderadoResponse;
 import com.example.schoolapp.features.asistencias.model.AsistenciaPorMesResponse;
 import com.example.schoolapp.features.inicio.model.AsistenciaResumen;
 import com.example.schoolapp.features.autenticacion.model.LoginRequest;
@@ -20,7 +21,8 @@ public interface ApiService {
     Call<LoginResponse> login (@Body LoginRequest loginRequest);
 
     @GET("obtenerAlumnoMovil")
-    Call<List<Alumno>> obtenerAlumnos();
+    Call<AlumnoConApoderadoResponse> obtenerAlumnosConApoderado();
+
 
     @GET("resumenAsistencia/{id}")
     Call<AsistenciaResumen> obtenerResumenAsistencia(@Path("id") int idAlumno);

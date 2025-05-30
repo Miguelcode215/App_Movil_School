@@ -13,6 +13,8 @@ public class AlumnoViewModel extends ViewModel {
     private AlumnoRepository repository;
     private MutableLiveData<List<Alumno>> alumnosLiveData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isError = new MutableLiveData<>();
+    private MutableLiveData<String> nombreApoderado = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>(false);
 
     public void init(android.content.Context context) {
         if (repository == null) {
@@ -24,17 +26,37 @@ public class AlumnoViewModel extends ViewModel {
         return alumnosLiveData;
     }
 
+    public LiveData<String> getNombreApoderado() {
+        return nombreApoderado;
+    }
+
     public LiveData<Boolean> getError() {
         return isError;
     }
 
     public void cargarAlumnos() {
+        isError.setValue(false);
+        isLoading.setValue(true);
+
         if (repository != null) {
-            repository.obtenerAlumnos(alumnosLiveData, isError);
+            repository.obtenerAlumnosConApoderado(
+                    alumnosLiveData,
+                    nombreApoderado,
+                    isError,
+                    isLoading);
         } else {
             isError.setValue(true);
+            isLoading.setValue(false);
         }
     }
 
+    public LiveData<Boolean> getIsError() {
+        return isError;
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
+    }
 }
+
 

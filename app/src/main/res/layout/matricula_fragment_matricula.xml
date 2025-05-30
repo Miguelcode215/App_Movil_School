@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_default">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MATRICULA"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:gravity="center"
+                android:paddingBottom="20dp" />
+
+            <TextView
+                android:id="@+id/textSubtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DETALLES DE MATRICULA"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_anuncios"
+                android:drawablePadding="8dp"
+                android:textColor="@color/text_secondary"
+                android:paddingBottom="24dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AÑO ACADEMICO:"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/textAnioAcademico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:paddingBottom="20dp" />
+
+                    <TextView
+                        android:id="@+id/labelAlumnos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ALUMNO(S):"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/textAlumnos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:paddingBottom="20dp" />
+
+                    <TextView
+                        android:id="@+id/labelGrados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GRADO(S):"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/textGrados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:paddingBottom="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="APODERADO:"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:paddingBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/textApoderado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:paddingBottom="10dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Verifique que los datos de matrícula estén actualizados. En caso de error, contacte a la institución."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:paddingTop="24dp"
+                android:paddingBottom="16dp"
+                android:gravity="center" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/view_loading" android:id="@+id/loadingOverlay" />
+</FrameLayout>

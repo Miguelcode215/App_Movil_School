@@ -115,21 +115,22 @@ public class ListaAsistenciasFragment extends Fragment {
         );
 
         // Observadores del ViewModel
+        // Loading solo aquí
         viewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
-            layoutLoading.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+            layoutLoading.setVisibility(isLoading != null && isLoading ? View.VISIBLE : View.GONE);
         });
 
+        // Error solo enfocado al mensaje
         viewModel.getIsError().observe(getViewLifecycleOwner(), isError -> {
-            if (isError) {
-                layoutLoading.setVisibility(View.GONE); // Por si quedó activado
+            if (isError != null && isError) {
                 textMensaje.setVisibility(View.VISIBLE);
                 textMensaje.setText("Error al cargar asistencias");
                 adapter.actualizarLista(null);
             }
         });
 
+        // Mostrar data sin tocar el loading
         viewModel.getAsistenciaResponse().observe(getViewLifecycleOwner(), response -> {
-            layoutLoading.setVisibility(View.GONE);
             if (response != null && response.getAsistencias() != null) {
                 List<AsistenciaPorMes> lista = response.getAsistencias();
                 if (!lista.isEmpty()) {

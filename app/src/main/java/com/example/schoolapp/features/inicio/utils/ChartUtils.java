@@ -77,10 +77,18 @@ public class ChartUtils {
 
     public static void configurarPieChart(PieChart pieChart, PorcentajeAsistencias porcentajes) {
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(porcentajes.presente, String.format(Locale.US, "%.0f%%", porcentajes.presente)));
-        entries.add(new PieEntry(porcentajes.atrasado, String.format(Locale.US, "%.0f%%", porcentajes.atrasado)));
-        entries.add(new PieEntry(porcentajes.ausente, String.format(Locale.US, "%.0f%%", porcentajes.ausente)));
-        entries.add(new PieEntry(porcentajes.justificado, String.format(Locale.US, "%.0f%%", porcentajes.justificado)));
+        if (porcentajes.presente > 0) {
+            entries.add(new PieEntry(porcentajes.presente, String.format(Locale.US, "%.0f%%", porcentajes.presente)));
+        }
+        if (porcentajes.atrasado > 0) {
+            entries.add(new PieEntry(porcentajes.atrasado, String.format(Locale.US, "%.0f%%", porcentajes.atrasado)));
+        }
+        if (porcentajes.ausente > 0) {
+            entries.add(new PieEntry(porcentajes.ausente, String.format(Locale.US, "%.0f%%", porcentajes.ausente)));
+        }
+        if (porcentajes.justificado > 0) {
+            entries.add(new PieEntry(porcentajes.justificado, String.format(Locale.US, "%.0f%%", porcentajes.justificado)));
+        }
 
         PieDataSet dataSet = new PieDataSet(entries, "Asistencias");
         dataSet.setColors(

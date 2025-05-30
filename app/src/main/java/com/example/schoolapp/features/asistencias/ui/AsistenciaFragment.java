@@ -40,12 +40,12 @@ public class AsistenciaFragment extends Fragment {
         alumnoViewModel = new ViewModelProvider(requireActivity()).get(AlumnoViewModel.class);
         alumnoViewModel.init(requireContext());
 
-        loadingOverlay.setVisibility(View.VISIBLE); // Mostrar mientras carga
-
-        alumnoViewModel.cargarAlumnos();
+        // 🔁 Solo cargar si aún no se ha hecho (mejor rendimiento si ya fue cargado)
+        if (alumnoViewModel.getAlumnos().getValue() == null) {
+            alumnoViewModel.cargarAlumnos();
+        }
 
         alumnoViewModel.getAlumnos().observe(getViewLifecycleOwner(), alumnos -> {
-            loadingOverlay.setVisibility(View.GONE); // Ocultar cuando termina
             if (alumnos != null && !alumnos.isEmpty()) {
                 AsistenciaAlumnoPagerAdapter adapter = new AsistenciaAlumnoPagerAdapter(this, alumnos);
                 viewPager.setAdapter(adapter);
@@ -54,9 +54,13 @@ public class AsistenciaFragment extends Fragment {
 
         alumnoViewModel.getError().observe(getViewLifecycleOwner(), error -> {
             if (error != null && error) {
-                loadingOverlay.setVisibility(View.GONE); // También ocultar si hay error
                 Toast.makeText(getContext(), "Error al cargar los alumnos", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // ✅ Manejo centralizado del loading
+        alumnoViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
+            loadingOverlay.setVisibility(isLoading != null && isLoading ? View.VISIBLE : View.GONE);
         });
     }
 }

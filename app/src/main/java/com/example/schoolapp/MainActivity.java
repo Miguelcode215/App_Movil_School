@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.schoolapp.features.asistencias.ui.AsistenciaFragment;
 import com.example.schoolapp.features.inicio.ui.InicioFragment;
+import com.example.schoolapp.features.matricula.ui.MatriculaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.menu_dashboard) {
                 selectedFragment = new AsistenciaFragment();
             } else if (item.getItemId() == R.id.menu_alumnos) {
-                // selectedFragment = new MatriculaFragment();
+                selectedFragment = new MatriculaFragment();
             }
 
             if (selectedFragment != null) {

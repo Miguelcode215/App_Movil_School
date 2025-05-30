@@ -69,8 +69,6 @@ public class ResumenAlumnoFragment extends Fragment {
 
         View loadingOverlay = view.findViewById(R.id.loadingOverlay);
 
-        loadingOverlay.setVisibility(View.VISIBLE);// Mostrar cuando cargando
-
         textNombre = view.findViewById(R.id.textNombreCompleto);
         textGrado = view.findViewById(R.id.textGrado);
         textPorcentaje = view.findViewById(R.id.textAsistenciaPorcentaje);
@@ -79,12 +77,13 @@ public class ResumenAlumnoFragment extends Fragment {
         barChart = view.findViewById(R.id.barChartAsistencia);
 
         if (alumno != null) {
+            textNombre.setText(alumno.getNombreCompleto());
+            textGrado.setText(alumno.getGrados().getNombre_grado());
             resumenAsistenciaViewModel = new ViewModelProvider(this).get(ResumenAsistenciaViewModel.class);
             resumenAsistenciaViewModel.cargarResumenAsistencia(alumno.getId_Alumno());
 
             resumenAsistenciaViewModel.getResumenLiveData()
                     .observe(getViewLifecycleOwner(), resumen -> {
-                        loadingOverlay.setVisibility(View.GONE); // ← Oculta al recibir los datos
                         if (resumen != null) {
                             mostrarDatos(alumno, resumen);
                         }
@@ -92,6 +91,11 @@ public class ResumenAlumnoFragment extends Fragment {
         } else {
             Log.e("ResumenAlumnoFragment", "Alumno recibido es null");
         }
+
+        resumenAsistenciaViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
+            loadingOverlay.setVisibility(isLoading != null && isLoading ? View.VISIBLE : View.GONE);
+        });
+
     }
 
     private void mostrarDatos(Alumno alumno, AsistenciaResumen resumen) {

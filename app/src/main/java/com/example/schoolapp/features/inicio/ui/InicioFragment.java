@@ -35,15 +35,14 @@ public class InicioFragment extends Fragment {
         viewPagerAlumnos = view.findViewById(R.id.viewPagerAlumnos);
         loadingOverlay = view.findViewById(R.id.loadingOverlay);
 
-        loadingOverlay.setVisibility(View.VISIBLE); // Mostrar la pantalla de carga
-
         // ViewModel y lógica de negocio
-        alumnoViewModel = new ViewModelProvider(this).get(AlumnoViewModel.class);
+        alumnoViewModel = new ViewModelProvider(requireActivity()).get(AlumnoViewModel.class);
         alumnoViewModel.init(requireContext());
-        alumnoViewModel.cargarAlumnos();
+        if (alumnoViewModel.getAlumnos().getValue() == null) {
+            alumnoViewModel.cargarAlumnos(); // Solo si no están cargados
+        }
 
         alumnoViewModel.getAlumnos().observe(getViewLifecycleOwner(), alumnos -> {
-            loadingOverlay.setVisibility(View.GONE); // Ocultar loading al obtener respuesta
             if (alumnos != null && !alumnos.isEmpty()) {
                 ResumenAlumnoPagerAdapter adapter = new ResumenAlumnoPagerAdapter(requireActivity(), alumnos);
                 viewPagerAlumnos.setAdapter(adapter);
@@ -54,9 +53,13 @@ public class InicioFragment extends Fragment {
 
         alumnoViewModel.getError().observe(getViewLifecycleOwner(), error -> {
             if (error) {
-                loadingOverlay.setVisibility(View.GONE); // Ocultar también en caso de error
                 Toast.makeText(getContext(), "Error al obtener alumnos", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // ✅ Nuevo: usar loading desde ViewModel
+        alumnoViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
+            loadingOverlay.setVisibility(isLoading != null && isLoading ? View.VISIBLE : View.GONE);
         });
     }
 }
