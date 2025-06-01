@@ -1,15 +1,15 @@
 package com.example.schoolapp.features.inicio.model;
 
 public class ConteoAsistencias {
-    public int presente;
-    public int atrasado;
-    public int ausente;
-    public int justificado;
+    public int Presente;
+    public int Atrasado;
+    public int Ausente;
+    public int Justificado;
 
     public ConteoAsistencias(int p, int a, int au, int j) {
-        this.presente = p;
-        this.atrasado = a;
-        this.ausente = au;
-        this.justificado = j;
+        this.Presente = p;
+        this.Atrasado = a;
+        this.Ausente = au;
+        this.Justificado = j;
     }
 }

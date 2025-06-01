@@ -101,7 +101,7 @@ public class ResumenAlumnoFragment extends Fragment {
     private void mostrarDatos(Alumno alumno, AsistenciaResumen resumen) {
         textNombre.setText(alumno.getNombreCompleto());
         textGrado.setText(alumno.getGrados().getNombre_grado());
-        textPorcentaje.setText(resumen.getPorcentaje_asistencia() + "%");
+        textPorcentaje.setText(ChartUtils.formatDecimal(resumen.getPorcentaje_asistencia()));
         textFaltas.setText(resumen.getConteo_faltas() + " faltas");
 
         Map<String, Integer> conteo = resumen.getConteo();

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Persona (más centrada) -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M12 7a2 2 0 1 1 0 4 2 2 0 0 1 0 -4zm0 5c-1.66 0-5 0.83-5 2.5V18h10v-3.5C17 12.83 13.66 12 12 12z" />
+
+    <!-- Hoja de matrícula -->
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M4 2h12l4 4v14c0 1.1 -0.9 2 -2 2H4c-1.1 0 -2 -0.9 -2 -2V4c0 -1.1 0.9 -2 2 -2zm0 2v16h14V8h-5V4H4z" />
+</vector>

@@ -1,8 +1,8 @@
 <resources>
-    <color name="background_default">#121212</color>
+    <color name="background_default">#4B4B4B</color>
     <color name="card_background">#1E1E1E</color>
 
-    <color name="text_primary">#FAFAFA</color>
+    <color name="text_primary">#FFFFFFFF</color>
     <color name="text_secondary">#CFD8DC</color>
 
     <color name="card_info_bg">#004D40</color>
@@ -12,7 +12,7 @@
     <color name="text_warning">#FFCDD2</color>
 
     <color name="colorFondoCard">#FFFFFF</color>
-    <color name="colorTextoLeyenda">#333333</color>
+    <color name="colorTextoLeyenda">#FFFFFFFF</color>
 
     <!-- Fondo general de Card -->
     <color name="cardBackground">#1E1E1E</color>
@@ -30,10 +30,13 @@
 
     <color name="lineaseparacion">#FFFFFFFF</color>
 
+    <color name="btnuser">#FFFFFFFF</color>
+    <color name="txtuser">#FF000000</color>
+
     <!-- Colores por tipo de asistenciaResumen (pueden mantenerse iguales o ser más suaves si deseas) -->
-    <color name="colorPresente">#81C784</color> <!-- Verde claro -->
-    <color name="colorAtrasado">#FFD54F</color> <!-- Amarillo claro -->
-    <color name="colorAusente">#E57373</color> <!-- Rojo claro -->
-    <color name="colorJustificado">#64B5F6</color> <!-- Azul claro -->
+    <color name="colorPresente">#4CAF50</color> <!-- Verde claro -->
+    <color name="colorAtrasado">#FEC107</color> <!-- Amarillo claro -->
+    <color name="colorAusente">#F44336</color> <!-- Rojo claro -->
+    <color name="colorJustificado">#2196F3</color> <!-- Azul claro -->
 
 </resources>

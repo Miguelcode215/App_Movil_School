@@ -51,7 +51,7 @@ public class InicioFragment extends Fragment {
             }
         });
 
-        alumnoViewModel.getError().observe(getViewLifecycleOwner(), error -> {
+        alumnoViewModel.getIsError().observe(getViewLifecycleOwner(), error -> {
             if (error) {
                 Toast.makeText(getContext(), "Error al obtener alumnos", Toast.LENGTH_SHORT).show();
             }

@@ -1,4 +1,3 @@
-// MatriculaFragment.java
 package com.example.schoolapp.features.matricula.ui;
 
 import android.os.Bundle;
@@ -36,6 +35,7 @@ public class MatriculaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Referencias UI
         textTitulo = view.findViewById(R.id.textTitulo);
         textSubtitulo = view.findViewById(R.id.textSubtitulo);
         textAnio = view.findViewById(R.id.textAnioAcademico);
@@ -46,12 +46,16 @@ public class MatriculaFragment extends Fragment {
         textLabelGrados = view.findViewById(R.id.labelGrados);
         loadingOverlay = view.findViewById(R.id.loadingOverlay);
 
+        // ViewModel compartido
         viewModel = new ViewModelProvider(requireActivity()).get(AlumnoViewModel.class);
-        viewModel.init(requireContext()); // Solo si no fue inicializado antes
-        viewModel.cargarAlumnos();        // Llama si aún no ha sido cargado
+        viewModel.init(requireContext());
 
-        loadingOverlay.setVisibility(View.VISIBLE);
+        // Solo si aún no hay datos, los cargamos
+        if (viewModel.getAlumnos().getValue() == null) {
+            viewModel.cargarAlumnos();
+        }
 
+        // Observadores
         viewModel.getAlumnos().observe(getViewLifecycleOwner(), alumnos -> {
             if (alumnos != null && !alumnos.isEmpty()) {
                 int anio = Calendar.getInstance().get(Calendar.YEAR);
@@ -70,25 +74,23 @@ public class MatriculaFragment extends Fragment {
                 textAlumnos.setText(nombres.toString().trim());
                 textGrados.setText(grados.toString().trim());
 
-                // Cambiar etiquetas según cantidad
                 textLabelAlumnos.setText(alumnos.size() > 1 ? "ALUMNOS:" : "ALUMNO:");
                 textLabelGrados.setText(alumnos.size() > 1 ? "GRADOS:" : "GRADO:");
             }
         });
 
-        viewModel.getNombreApoderado().observe(getViewLifecycleOwner(), nombre -> {
-            textApoderado.setText(nombre);
-        });
-
-        viewModel.getIsError().observe(getViewLifecycleOwner(), error -> {
-            loadingOverlay.setVisibility(View.GONE);
-            if (error != null && error) {
-                Toast.makeText(getContext(), "Error al obtener datos de matrícula", Toast.LENGTH_SHORT).show();
-            }
+        viewModel.getApoderado().observe(getViewLifecycleOwner(), apoderado -> {
+            textApoderado.setText(apoderado.getNombreCompleto());
         });
 
         viewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
             loadingOverlay.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        });
+
+        viewModel.getIsError().observe(getViewLifecycleOwner(), error -> {
+            if (error != null && error) {
+                Toast.makeText(getContext(), "Error al obtener datos de matrícula", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

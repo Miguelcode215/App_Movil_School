@@ -52,7 +52,7 @@ public class AsistenciaFragment extends Fragment {
             }
         });
 
-        alumnoViewModel.getError().observe(getViewLifecycleOwner(), error -> {
+        alumnoViewModel.getIsError().observe(getViewLifecycleOwner(), error -> {
             if (error != null && error) {
                 Toast.makeText(getContext(), "Error al cargar los alumnos", Toast.LENGTH_SHORT).show();
             }

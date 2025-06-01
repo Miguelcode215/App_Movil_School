@@ -8,7 +8,7 @@ public class AsistenciaResumen implements Serializable {
     private int id_alumno;
     private String nombre_completo;
     private String grado;
-    private int porcentaje_asistencia;
+    private float porcentaje_asistencia;
     private int conteo_faltas;
     private Map<String, Integer> conteo;
     private Map<String, Float> distribucion_porcentual;
@@ -26,7 +26,7 @@ public class AsistenciaResumen implements Serializable {
         return grado;
     }
 
-    public int getPorcentaje_asistencia() {
+    public float getPorcentaje_asistencia() {
         return porcentaje_asistencia;
     }
 

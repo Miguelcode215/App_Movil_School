@@ -25,10 +25,10 @@ public class ChartUtils {
 
     public static void configurarBarChart(Context context, BarChart barChart, ConteoAsistencias conteo) {
         List<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0, conteo.presente));
-        entries.add(new BarEntry(1, conteo.atrasado));
-        entries.add(new BarEntry(2, conteo.ausente));
-        entries.add(new BarEntry(3, conteo.justificado));
+        entries.add(new BarEntry(0, conteo.Presente));
+        entries.add(new BarEntry(1, conteo.Atrasado));
+        entries.add(new BarEntry(2, conteo.Ausente));
+        entries.add(new BarEntry(3, conteo.Justificado));
 
         BarDataSet dataSet = new BarDataSet(entries, "Asistencias");
         dataSet.setColors(
@@ -38,6 +38,13 @@ public class ChartUtils {
                 Color.rgb(33, 150, 243)   // Azul - Justificado
         );
         dataSet.setValueTextSize(12f);
+
+        dataSet.setValueFormatter(new com.github.mikephil.charting.formatter.ValueFormatter() {
+            @Override
+            public String getBarLabel(BarEntry barEntry) {
+                return String.valueOf((int) barEntry.getY()); // sin decimales
+            }
+        });
 
         boolean isDarkMode = (context.getResources().getConfiguration().uiMode
                 & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
@@ -77,18 +84,10 @@ public class ChartUtils {
 
     public static void configurarPieChart(PieChart pieChart, PorcentajeAsistencias porcentajes) {
         List<PieEntry> entries = new ArrayList<>();
-        if (porcentajes.presente > 0) {
-            entries.add(new PieEntry(porcentajes.presente, String.format(Locale.US, "%.0f%%", porcentajes.presente)));
-        }
-        if (porcentajes.atrasado > 0) {
-            entries.add(new PieEntry(porcentajes.atrasado, String.format(Locale.US, "%.0f%%", porcentajes.atrasado)));
-        }
-        if (porcentajes.ausente > 0) {
-            entries.add(new PieEntry(porcentajes.ausente, String.format(Locale.US, "%.0f%%", porcentajes.ausente)));
-        }
-        if (porcentajes.justificado > 0) {
-            entries.add(new PieEntry(porcentajes.justificado, String.format(Locale.US, "%.0f%%", porcentajes.justificado)));
-        }
+        entries.add(new PieEntry(porcentajes.Presente, porcentajes.Presente > 0 ? formatDecimal(porcentajes.Presente) : ""));
+        entries.add(new PieEntry(porcentajes.Atrasado, porcentajes.Atrasado > 0 ? formatDecimal(porcentajes.Atrasado) : ""));
+        entries.add(new PieEntry(porcentajes.Ausente, porcentajes.Ausente > 0 ? formatDecimal(porcentajes.Ausente) : ""));
+        entries.add(new PieEntry(porcentajes.Justificado, porcentajes.Justificado > 0 ? formatDecimal(porcentajes.Justificado) : ""));
 
         PieDataSet dataSet = new PieDataSet(entries, "Asistencias");
         dataSet.setColors(
@@ -115,4 +114,14 @@ public class ChartUtils {
 
         pieChart.invalidate();
     }
+
+    public static String formatDecimal(float value) {
+        int decimal = (int)((value * 100) % 100); // obtiene los 2 decimales
+        if (decimal == 0) {
+            return String.format(Locale.US, "%.0f%%", value); // sin decimales si es 0
+        } else {
+            return String.format(Locale.US, "%.2f%%", value); // con 2 decimales
+        }
+    }
+
 }

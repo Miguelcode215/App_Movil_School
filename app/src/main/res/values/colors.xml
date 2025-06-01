@@ -4,10 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#EBE157</color>
 
-    <color name="background_default">#FAFAFA</color>
+    <color name="background_default">#E4E4E4</color>
     <color name="card_background">#FFFFFF</color>
 
-    <color name="text_primary">#263238</color>
+    <color name="text_primary">#FF000000</color>
     <color name="text_secondary">#455A64</color>
 
     <color name="card_info_bg">#B2EBF2</color>
@@ -17,7 +17,7 @@
     <color name="text_warning">#B71C1C</color>
 
     <color name="colorFondoCard">#FFFFFF</color>
-    <color name="colorTextoLeyenda">#333333</color>
+    <color name="colorTextoLeyenda">#FF000000</color>
 
     <!-- Fondo general de Card -->
     <color name="cardBackground">#FFFFFF</color>
@@ -26,7 +26,7 @@
     <color name="colorTituloGrafico">#FF000000</color>
 
     <!-- color para titulo y barra de navegacion -->
-    <color name="tituloynavegacion">#CACACA</color>
+    <color name="tituloynavegacion">#A8A8A8</color>
 
     <!-- color para tla pantalla de carga -->
     <color name="loading">#B3000000</color>
@@ -37,9 +37,12 @@
 
     <color name="lineaseparacion">#FF000000</color>
 
+    <color name="btnuser">#FF000000</color>
+    <color name="txtuser">#FFFFFFFF</color>
+
     <!-- Colores por tipo de asistenciaResumen -->
     <color name="colorPresente">#4CAF50</color> <!-- Verde -->
-    <color name="colorAtrasado">#FFC107</color> <!-- Amarillo -->
+    <color name="colorAtrasado">#FEC107</color> <!-- Amarillo -->
     <color name="colorAusente">#F44336</color> <!-- Rojo -->
     <color name="colorJustificado">#2196F3</color> <!-- Azul -->
 

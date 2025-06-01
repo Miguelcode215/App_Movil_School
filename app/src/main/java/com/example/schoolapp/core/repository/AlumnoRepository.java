@@ -4,6 +4,7 @@ import android.content.Context;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.schoolapp.core.model.AlumnoConApoderadoResponse;
+import com.example.schoolapp.core.model.Apoderado;
 import com.example.schoolapp.core.network.ApiClient;
 import com.example.schoolapp.core.network.ApiService;
 import com.example.schoolapp.core.model.Alumno;
@@ -23,7 +24,7 @@ public class AlumnoRepository {
 
     public void obtenerAlumnosConApoderado(
             MutableLiveData<List<Alumno>> alumnosLiveData,
-            MutableLiveData<String> nombreApoderado,
+            MutableLiveData<Apoderado> apoderadoLiveData,
             MutableLiveData<Boolean> isError,
             MutableLiveData<Boolean> isLoading) {
 
@@ -35,9 +36,9 @@ public class AlumnoRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     alumnosLiveData.postValue(response.body().getAlumnos());
 
-                    AlumnoConApoderadoResponse.Apoderado apo = response.body().getApoderado();
+                    Apoderado apo = response.body().getApoderado();
                     if (apo != null) {
-                        nombreApoderado.postValue(apo.getNombreCompleto());
+                        apoderadoLiveData.postValue(apo);
                     }
 
                 } else {

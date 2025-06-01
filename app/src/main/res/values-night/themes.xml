@@ -1,7 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SchoolApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Theme.SchoolApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores generales -->
+        <item name="colorPrimary">@color/text_primary</item>
+        <item name="colorOnPrimary">@color/txtuser</item>
+        <item name="colorSurface">@color/cardBackground</item>
+        <item name="android:colorBackground">@color/background_default</item>
+        <item name="colorError">@color/design_default_color_error</item>
+
+        <!-- TextInputLayout y componentes Material -->
+        <item name="colorControlActivated">@color/text_primary</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+
+        <!-- Evita tintes morados por defecto -->
+        <item name="colorAccent">@color/text_primary</item>
+        <item name="colorSecondary">@color/text_primary</item>
+
+        <!-- Texto general -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 </resources>

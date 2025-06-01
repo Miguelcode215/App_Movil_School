@@ -1,15 +1,15 @@
 package com.example.schoolapp.features.inicio.model;
 
 public class PorcentajeAsistencias {
-    public float presente;
-    public float atrasado;
-    public float ausente;
-    public float justificado;
+    public float Presente;
+    public float Atrasado;
+    public float Ausente;
+    public float Justificado;
 
     public PorcentajeAsistencias(float p, float a, float au, float j) {
-        this.presente = p;
-        this.atrasado = a;
-        this.ausente = au;
-        this.justificado = j;
+        this.Presente = p;
+        this.Atrasado = a;
+        this.Ausente = au;
+        this.Justificado = j;
     }
 }

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://172.17.2.135:8000/api/";
+    private static final String BASE_URL = "http://192.168.0.75:8000/api/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getCliente(Context context) {

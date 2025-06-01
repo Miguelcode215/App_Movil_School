@@ -30,6 +30,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:background="@color/background_default"
                         android:padding="16dp">
 
                         <TextView
@@ -52,81 +53,91 @@
                             android:paddingBottom="16dp" />
 
                         <!-- Tarjetas resumen -->
-                        <LinearLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2"
-                            android:paddingBottom="16dp">
+                            android:layout_marginVertical="12dp"
+                            app:cardCornerRadius="12dp"
+                            android:elevation="4dp"
+                            app:cardBackgroundColor="@color/cardBackground">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cardAsistenciaPorcentaje"
-                                android:layout_width="0dp"
-                                android:layout_height="110dp"
-                                android:layout_weight="1"
-                                android:layout_marginEnd="8dp"
-                                app:cardCornerRadius="12dp"
-                                android:elevation="3dp"
-                                android:backgroundTint="@color/card_info_bg">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                android:padding="15dp"
+                                android:paddingBottom="16dp">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:gravity="center">
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardAsistenciaPorcentaje"
+                                    android:layout_width="0dp"
+                                    android:layout_height="110dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    android:elevation="3dp"
+                                    android:backgroundTint="@color/card_info_bg">
 
-                                    <TextView
-                                        android:id="@+id/textAsistenciaPorcentaje"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--%"
-                                        android:textSize="24sp"
-                                        android:textStyle="bold"
-                                        android:textColor="@color/text_info" />
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:gravity="center">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Asistencia"
-                                        android:textSize="14sp"
-                                        android:textColor="@color/text_info" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
+                                        <TextView
+                                            android:id="@+id/textAsistenciaPorcentaje"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="--%"
+                                            android:textSize="24sp"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/text_info" />
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cardFaltasTotales"
-                                android:layout_width="0dp"
-                                android:layout_height="110dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                app:cardCornerRadius="12dp"
-                                android:elevation="3dp"
-                                android:backgroundTint="@color/card_warning_bg">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Asistencia"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/text_info" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:gravity="center">
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardFaltasTotales"
+                                    android:layout_width="0dp"
+                                    android:layout_height="110dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="8dp"
+                                    app:cardCornerRadius="12dp"
+                                    android:elevation="3dp"
+                                    android:backgroundTint="@color/card_warning_bg">
 
-                                    <TextView
-                                        android:id="@+id/textCantidadFaltas"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textSize="24sp"
-                                        android:textStyle="bold"
-                                        android:textColor="@color/text_warning" />
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:gravity="center">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Faltas"
-                                        android:textSize="14sp"
-                                        android:textColor="@color/text_warning" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/textCantidadFaltas"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="--"
+                                            android:textSize="24sp"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/text_warning" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Faltas"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/text_warning" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <!-- Card: Gráfico Pie -->
                         <androidx.cardview.widget.CardView
@@ -197,6 +208,7 @@
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:text="Presente"
+                                                    android:textColor="@color/text_primary"
                                                     android:layout_marginStart="8dp" />
                                             </LinearLayout>
 
@@ -215,6 +227,7 @@
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:text="Atrasado"
+                                                    android:textColor="@color/text_primary"
                                                     android:layout_marginStart="8dp" />
                                             </LinearLayout>
 
@@ -233,6 +246,7 @@
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:text="Ausente"
+                                                    android:textColor="@color/text_primary"
                                                     android:layout_marginStart="8dp" />
                                             </LinearLayout>
 
@@ -250,6 +264,7 @@
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:text="Justificado"
+                                                    android:textColor="@color/text_primary"
                                                     android:layout_marginStart="8dp" />
                                             </LinearLayout>
 

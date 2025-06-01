@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@color/cardBackground"
                 android:padding="16dp">
 
                 <TextView
@@ -56,9 +57,10 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_calendar"
+                        android:src="@drawable/ic_calendar_vector"
                         android:contentDescription="Ícono calendario"
                         android:layout_marginEnd="8dp" />
+
 
                     <!-- Selector de mes -->
                     <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +91,7 @@
             android:layout_weight="1"
             android:elevation="4dp"
             app:cardCornerRadius="12dp"
-            app:cardBackgroundColor="@color/card_asistencia_background">
+            app:cardBackgroundColor="@color/cardBackground">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerAsistencias"

@@ -5,9 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/background_default">
 
+    <!-- Título principal (como en asistencia) -->
+    <TextView
+        android:id="@+id/textTituloMatricula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MATRÍCULA"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/tituloynavegacion" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -15,34 +29,46 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="MATRICULA"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:gravity="center"
-                android:paddingBottom="20dp" />
-
-            <TextView
-                android:id="@+id/textSubtitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DETALLES DE MATRICULA"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:drawableStart="@drawable/ic_anuncios"
-                android:drawablePadding="8dp"
-                android:textColor="@color/text_secondary"
-                android:paddingBottom="24dp" />
-
+            <!-- Card del subtítulo con icono -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/cardBackground"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_matricula_vector"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/textSubtitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DETALLES DE MATRÍCULA"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card principal de información -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/cardBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AÑO ACADEMICO:"
+                        android:text="AÑO ACADÉMICO:"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/text_primary"
@@ -64,6 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
+                        android:textColor="@color/text_primary"
                         android:paddingBottom="20dp" />
 
                     <TextView
@@ -81,6 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
+                        android:textColor="@color/text_primary"
                         android:paddingBottom="20dp" />
 
                     <TextView
@@ -98,6 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
+                        android:textColor="@color/text_primary"
                         android:paddingBottom="20dp" />
 
                     <TextView
@@ -114,22 +143,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
+                        android:textColor="@color/text_primary"
                         android:paddingBottom="10dp" />
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Mensaje final -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Verifique que los datos de matrícula estén actualizados. En caso de error, contacte a la institución."
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
+                android:gravity="center"
                 android:paddingTop="24dp"
-                android:paddingBottom="16dp"
-                android:gravity="center" />
+                android:paddingBottom="16dp" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Overlay de carga -->
     <include layout="@layout/view_loading" android:id="@+id/loadingOverlay" />
 </FrameLayout>
